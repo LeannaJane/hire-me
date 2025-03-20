@@ -1,0 +1,11 @@
+body {
+    background-color: #121212;
+    color: white;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.bg-off-black {
+    background-color: #121212;
+}
