@@ -3,12 +3,6 @@ export default function AuthForm({
     fields,
     buttonText,
     onSubmit,
-    email,
-    password,
-    name,
-    setEmail,
-    setPassword,
-    setName
 }) {
     return (
         <div className="container d-flex flex-column justify-content-center align-items-center vh-100">
@@ -22,16 +16,9 @@ export default function AuthForm({
                                 type={field.type}
                                 className="form-control w-100 px-3 py-2"
                                 id={field.id}
-                                value={
-                                    field.id === "email" ? email :
-                                    field.id === "password" ? password :
-                                    field.id === "name" ? name : ""
-                                }
-                                onChange={(e) => {
-                                    if (field.id === "email") setEmail(e.target.value);
-                                    else if (field.id === "password") setPassword(e.target.value);
-                                    else if (field.id === "name") setName(e.target.value); // Handle name input
-                                }}
+                                value={field.value} // Dynamic value binding
+                                onChange={field.onChange} // Dynamic onChange handler
+                                autoComplete={field.autocomplete || 'off'} // Optional autoComplete
                             />
                         </div>
                     ))}

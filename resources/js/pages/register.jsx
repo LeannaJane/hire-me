@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 import AuthForm from "../Components/auth_form";
 
 export default function Register() {
@@ -7,8 +7,6 @@ export default function Register() {
     const [name, setName] = useState('');
 
     const handleSubmit = async (e) => {
-
-
         e.preventDefault();
 
         const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
@@ -38,18 +36,12 @@ export default function Register() {
         <AuthForm
             title="Sign Up"
             fields={[
-                { id: "name", label: "Full Name", type: "text" }, // Add the name field
-                { id: "email", label: "Email Address", type: "email" },
-                { id: "password", label: "Password", type: "password", autocomplete: "current-password" },
+                { id: "name", label: "Full Name", type: "text", value: name, onChange: (e) => setName(e.target.value) },
+                { id: "email", label: "Email Address", type: "email", value: email, onChange: (e) => setEmail(e.target.value) },
+                { id: "password", label: "Password", type: "password", value: password, onChange: (e) => setPassword(e.target.value) }
             ]}
             buttonText="Sign Up"
             onSubmit={handleSubmit}
-            email={email}
-            password={password}
-            name={name}
-            setEmail={setEmail}
-            setPassword={setPassword}
-            setName={setName}
         />
     );
 }
