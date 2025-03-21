@@ -2,7 +2,7 @@ export default function Welcome() {
 
     return (
         <div className="container py-4">
-            <div class="d-flex flex-column align-items-center">
+            <div className="d-flex flex-column align-items-center">
                 <h1 className="">Hire Me</h1>
                 <p className="">A tool to help you stay organised, motivated, and in control of your job applications</p>
                 <img src="https://placehold.co/600x400" alt="Hire Me" />
