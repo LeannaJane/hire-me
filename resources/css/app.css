@@ -14,3 +14,29 @@ body {
     padding-left: 0 !important;
     padding-right: 0 !important;
 }
+
+/* Calendar */
+.rbc-calendar .rbc-today {
+    background-color: #d12525 !important;
+}
+
+.rbc-calendar .rbc-time-view .rbc-today {
+    background-color: transparent !important;
+}
+
+.rbc-calendar .rbc-off-range-bg {
+    background-color: #434343;
+}
+
+.rbc-calendar .rbc-toolbar button {
+    color: white;
+}
+
+.rbc-calendar .rbc-toolbar button.rbc-active {
+    background-color: #d12525;
+}
+
+.rbc-calendar .rbc-toolbar button:hover {
+    background-color: #c94c4c;
+    color: white;
+}
