@@ -21,7 +21,6 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
 
-
         // Step 2: Attempt authentication
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {

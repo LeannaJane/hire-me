@@ -16,9 +16,8 @@ export default function AuthForm({
                                 type={field.type}
                                 className="form-control w-100 px-3 py-2"
                                 id={field.id}
-                                value={field.value} // Dynamic value binding
-                                onChange={field.onChange} // Dynamic onChange handler
-                                autoComplete={field.autocomplete || 'off'} // Optional autoComplete
+                                value={field.value}
+                                onChange={field.onChange}
                             />
                         </div>
                     ))}
