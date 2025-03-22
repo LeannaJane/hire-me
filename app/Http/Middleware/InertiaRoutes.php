@@ -20,8 +20,8 @@ class InertiaRoutes
         Inertia::share('routes', [
             ['url' => '/dashboard', 'label' => 'Dashboard', 'isActive' => false],
             ['url' => '/job-application', 'label' => 'Job Applications', 'isActive' => false],
-            ['url' => '/job-application', 'label' => 'Calendar', 'isActive' => false],
-            ['url' => '/job-application', 'label' => 'Notepad', 'isActive' => false],
+            ['url' => '/calendar', 'label' => 'Calendar', 'isActive' => false],
+            ['url' => '/notepad', 'label' => 'Notepad', 'isActive' => false],
         ]);
 
         Inertia::share('user', Auth::user());

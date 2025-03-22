@@ -1,10 +1,14 @@
 <?php
 
 use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\NotePadController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SettingsController;
 use Illuminate\Support\Facades\Route;
+use PhpParser\Node\Expr\CallLike;
 
 Route::get("/login", [LoginController::class, "view"])->name('login');
 Route::get("/register", [RegisterController::class, "view"])->name('register');
@@ -16,4 +20,8 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::middleware([/*'auth',*/ 'inertia'])->group(function () {
     Route::get("/dashboard", [DashboardController::class, "view"]);
     Route::get("/job-application", [ApplicationController::class, "view"]);
+    Route::get("/calendar", [CalendarController::class, "view"]);
+    Route::get("/notepad", [NotePadController::class, "view"]);
+    Route::get("/settings", [SettingsController::class, "view"]);
 });
+
