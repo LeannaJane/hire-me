@@ -18,8 +18,10 @@ class InertiaRoutes
     public function handle(Request $request, Closure $next): Response
     {
         Inertia::share('routes', [
-            ['url' => '/dashboard', 'label' => 'Dashboard', 'isActive' => true],
-            ['url' => '/asdasdas', 'label' => 'Dashboard', 'isActive' => false],
+            ['url' => '/dashboard', 'label' => 'Dashboard', 'isActive' => false],
+            ['url' => '/job-application', 'label' => 'Job Applications', 'isActive' => false],
+            ['url' => '/job-application', 'label' => 'Calendar', 'isActive' => false],
+            ['url' => '/job-application', 'label' => 'Notepad', 'isActive' => false],
         ]);
 
         Inertia::share('user', Auth::user());
