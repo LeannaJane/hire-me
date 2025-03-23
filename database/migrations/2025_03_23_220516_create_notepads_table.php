@@ -11,16 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('applications', function (Blueprint $table) {
+        Schema::create('notepads', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('job_title');
-            $table->string('company_name');
-            $table->string('job_link')->nullable();
-            $table->date('application_date')->nullable();
-            $table->integer('stage')->nullable();
-            $table->string('salary')->nullable();
-            $table->dateTime('interview_date')->nullable();
+            $table->string("title");
+            $table->text("content")->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('applications');
+        Schema::dropIfExists('notepads');
     }
 };

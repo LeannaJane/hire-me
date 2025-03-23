@@ -56,8 +56,72 @@ body {
     color: white;
 }
 
-/* Datepicker */
 
 .react-datepicker-wrapper {
     display: block !important;
 }
+
+
+.notes-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: start;
+}
+
+
+/* Styling the notepad.*/
+
+.note-item {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 15px;
+    border-radius: 10px;
+    width: 200px;
+    height: 200px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    word-wrap: break-word;
+    white-space: normal;
+    justify-content: flex-start;
+
+}
+
+.note-item h5 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+
+}
+
+/* Disable gutters as it was causing unnessary padding on the left of container.*/
+.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    --bs-gutter-x: 0;
+    --bs-gutter-y: 0;
+    width: 100%;
+}
+
+
+.note-item p {
+    font-size: 1rem;
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    white-space: normal;
+    overflow-y: auto;
+}
+
+/* Styling the scrollbar track */
+.note-item p::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.container {
+    -bs-gutter-x: 0;
+}
+

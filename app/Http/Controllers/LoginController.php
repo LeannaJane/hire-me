@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 class LoginController extends Controller
 {
@@ -25,13 +27,13 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return response()->json(['message' => 'Login successful'], 200);
+            return response()->json(['success' => true, 'redirect' => '/dashboard']);
         }
 
         // Step 3: Handle authentication failure
         return response()->json([
-            'errors' => ['email' => 'Invalid credentials']
-        ], 422);  // 422 is used when validation fails
+            'success' => false, 'errors' => ['email' => 'Invalid credentials']
+        ]);
     }
 
 

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -27,7 +28,7 @@ class RegisterController extends Controller
 
         // Step 2: Handle validation failure
         if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 422);
+            return response()->json(['success' => false, 'errors' => $validator->errors()]);
         }
 
         // Step 3: Create the user.
@@ -37,8 +38,12 @@ class RegisterController extends Controller
             'name' => $request->name,
         ]);
 
+        if (!Auth::loginUsingId($user->id)) {
+            return response()->json(['success' => false, 'errors' => 'Invalid credentials']);
+        }
+
         // Step 4: Return a success response in console.
-        return response()->json(['message' => 'User registered successfully'], 201);
+        return response()->json(['success' => true, 'redirect' => '/dashboard']);
     }
 
 

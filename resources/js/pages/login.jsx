@@ -24,8 +24,8 @@ export default function Login() {
                 }
             });
 
-            if (response.status === 200) {
-                console.log('User logged in successfully');
+            if (response.data.success) {
+                window.location.href = response.data.redirect;
             }
         } catch (error) {
             if (error.response) {

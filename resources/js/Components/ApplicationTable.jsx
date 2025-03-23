@@ -2,18 +2,20 @@ import { useEffect, useState } from 'react';
 import ApplicationModal from './ApplicationModal';
 import bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min';
 import axios from 'axios';
+import moment from 'moment';
 
 export default function ApplicationTable({ applications }) {
     const [applicationList, setApplicationList] = useState([]);
+    const [editingApplication, setEditingApplication] = useState(null);
 
     useEffect(() => {
-        if(applications != null && applications.length > 0) {
+        if (applications != null && applications.length > 0) {
+            console.log(applications);
             setApplicationList(applications);
         }
-    }, []);
+    }, [applications]);
 
     const handleNewJobSubmit = (newApplication) => {
-        console.log([...applicationList, newApplication])
         setApplicationList((prevList) => [...prevList, newApplication]);
         bootstrap.Modal.getInstance(document.getElementById("applicationTableModal")).hide();
     };
@@ -28,6 +30,31 @@ export default function ApplicationTable({ applications }) {
 
             setApplicationList(remainingApplications);
         }
+    };
+
+    const editApplication = (id) => {
+        axios.get(`/job-application/${id}`)
+            .then(response => {
+                const applicationData = response.data.application;
+                setEditingApplication(applicationData);
+                const modal = new bootstrap.Modal(document.getElementById("applicationTableModal"));
+                modal.show();
+            })
+            .catch(error => {
+                console.error("There was an error fetching the application data:", error);
+            });
+    };
+
+    const dateFormat = (date, timeFormat = false) => {
+        if (date === undefined || date === null || date == '') {
+            return '';
+        }
+
+        if (timeFormat) {
+            return moment(date).format("DD/MM/YYYY HH:mm");
+        }
+
+        return moment(date).format("DD/MM/YYYY");
     };
 
     useEffect(() => {
@@ -57,13 +84,13 @@ export default function ApplicationTable({ applications }) {
                             <td>{application.job_title}</td>
                             <td>{application.company_name}</td>
                             <td>{application.salary}</td>
-                            <td>{application.application_date}</td>
-                            <td>{application.stage}</td>
-                            <td>{application.interview_datetime}</td>
+                            <td>{dateFormat(application.application_date)}</td>
+                            <td>{application.stage_name}</td>
+                            <td>{dateFormat(application.interview_date, true)}</td>
                             <td>
-                                <button className="btn btn-secondary mb-2 me-2 mt-2">View Job</button>
-                                <button className="btn btn-primary mb-2 me-2 mt-2">Edit</button>
-                                <button className="btn btn-danger mb-2 me-2 mt-2" onClick={() => deleteApplication(application.id)}>Delete</button>
+                                <button className="btn btn-secondary my-2 me-2">View Job</button>
+                                <button className="btn btn-primary my-2 me-2"  onClick={() => editApplication(application.id)}>Edit</button>
+                                <button className="btn btn-danger my-2 me-2" onClick={() => deleteApplication(application.id)}>Delete</button>
                             </td>
                         </tr>
                     ))}
@@ -72,6 +99,7 @@ export default function ApplicationTable({ applications }) {
 
             <ApplicationModal
                 handleSubmit={handleNewJobSubmit}
+                applicationData={editingApplication}
             />
         </>
     );

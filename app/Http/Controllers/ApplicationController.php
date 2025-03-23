@@ -26,7 +26,7 @@ class ApplicationController extends Controller
             'company_name' => 'required|string|max:255',
             'job_link' => 'required|string|url',
             'application_date' => 'required|date',
-            'stage' => 'required|string|max:255',
+            'stage' => 'required|numeric|max:255',
             'interview_date' => 'nullable|date_format:Y-m-d H:i:s',
             'salary' => 'required|numeric'
         ]);
@@ -62,6 +62,16 @@ class ApplicationController extends Controller
 
         return response()->json(['success' => true]);
     }
+
+    public function viewOne($id)
+    {
+        $application = Application::find($id);
+        if ($application) {
+            return response()->json(['application' => $application]);
+        }
+        return response()->json(['error' => 'Application not found'], 404);
+    }
+
 }
 
 

@@ -9,26 +9,14 @@ export default function Register() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
-        if (!csrfToken) {
-            console.error('CSRF token not found');
-            return;
-        }
-
-        const response = await fetch('/register', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': csrfToken,
-            },
-            body: JSON.stringify({ email, password, name }),
+        const response = await axios.post('/register', {
+            'email': email,
+            'password': password,
+            'name': name
         });
 
-        if (response.ok) {
-            console.log('User registered successfully');
-        } else {
-            const errorData = await response.json();
-            console.error('Error registering user:', errorData.errors);
+        if (response.data.success) {
+            window.location.href = response.data.redirect;
         }
     };
 
