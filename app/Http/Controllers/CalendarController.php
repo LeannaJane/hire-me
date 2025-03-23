@@ -12,9 +12,3 @@ class CalendarController extends Controller
         return Inertia::render('calendar');
     }
 }
-
-
-
-
-
-
