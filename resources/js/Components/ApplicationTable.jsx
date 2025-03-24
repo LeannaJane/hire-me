@@ -4,6 +4,8 @@ import bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min';
 import axios from 'axios';
 import moment from 'moment';
 
+// This function handles the application table.
+
 export default function ApplicationTable({ applications }) {
     const [applicationList, setApplicationList] = useState([]);
     const [editingApplication, setEditingApplication] = useState(null);

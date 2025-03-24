@@ -1,3 +1,5 @@
+// The UI for the authentication for the create and login.
+
 export default function AuthForm({
     title,
     fields,

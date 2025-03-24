@@ -2,6 +2,8 @@ import { useState } from "react";
 import MenuItem from "./MenuItem";
 import ProfileSection from "./ProfileSection";
 
+
+// The sidebar for every page in the application, it can be opened or closed.
 export default function SidebarControl({ routes }) {
     const [isOpen, setIsOpen] = useState(true);
 

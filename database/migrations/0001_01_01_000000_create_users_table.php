@@ -4,6 +4,10 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+
+// Migrations refer to the process of managing and version changes to the database schema, allowing
+// the database to be updated.
+
 return new class extends Migration
 {
     /**

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import AuthForm from "../Components/auth_form";
 
+
+// This function is for handling the users request to create an account.
 export default function Register() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');

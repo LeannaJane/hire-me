@@ -1,4 +1,6 @@
 export default function ProfileSection({ setIsOpen }) {
+    // The bottom of the sidebar, with a settings, and profile.
+
     return (
         <div className="position-absolute bottom-0 start-0 end-0 p-3 border-top border-white">
             <div className="d-flex align-items-center justify-content-between">

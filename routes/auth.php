@@ -31,3 +31,8 @@ Route::middleware(['auth', 'inertia'])->group(function () {
 });
 
 
+
+// GET: the get method is used to retrieve data from the server.
+// POST: the post method sends data to the server and creates a new resource.
+// PUT: the put method is often used to update an existing resource.
+// DELETE: the delete method is used to delete a resource.

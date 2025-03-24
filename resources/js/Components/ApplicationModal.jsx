@@ -4,6 +4,10 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from 'axios';
 
+
+// This model handles the input from the user, edit, delete, add. And updates the columns with the application data.
+// There is no error handling yet.
+// IT also handles the UI of the application page.
 export default function ApplicationModal({ handleSubmit, applicationData = null }) {
     const [jobTitle, setJobTitle] = useState('');
     const [company, setCompany] = useState('');

@@ -4,6 +4,8 @@ import moment from "moment";
 import axios from "axios";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
+
+// Big Calender, sets out the calender UI.
 moment.locale("en-GB");
 const localizer = momentLocalizer(moment);
 
