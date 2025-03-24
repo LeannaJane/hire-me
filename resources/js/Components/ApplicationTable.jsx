@@ -63,7 +63,7 @@ export default function ApplicationTable({ applications }) {
 
     return (
         <>
-            <button className="btn btn-primary mb-3" type="button" data-bs-toggle="modal" data-bs-target="#applicationTableModal">New Application</button>
+            <button className="btn btn-primary position-fixed bottom-0 end-0 mb-4 me-3"  type="button" data-bs-toggle="modal" data-bs-target="#applicationTableModal">New Application</button>
             <table className="table table-dark table-hover">
                 <thead>
                     <tr>
@@ -88,7 +88,7 @@ export default function ApplicationTable({ applications }) {
                             <td>{application.stage_name}</td>
                             <td>{dateFormat(application.interview_date, true)}</td>
                             <td>
-                                <button className="btn btn-secondary my-2 me-2">View Job</button>
+                                <button className="btn btn-secondary my-2 me-2" onClick={() => window.open(application.job_link, 'blanl')}>View Job</button>
                                 <button className="btn btn-primary my-2 me-2"  onClick={() => editApplication(application.id)}>Edit</button>
                                 <button className="btn btn-danger my-2 me-2" onClick={() => deleteApplication(application.id)}>Delete</button>
                             </td>

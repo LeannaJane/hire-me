@@ -32,7 +32,7 @@ export default function Notepad({ routes, notes, user }) {
         <AuthLayout routes={routes}>
             <h1 className='fs-4 fw-bold'>Your Notepad</h1>
             <div className="mt-4">
-            <button className="btn btn-primary position-fixed bottom-0 end-0 m-3" onClick={openPopup}>Add Note</button>
+            <button className="btn btn-primary position-fixed bottom-0 end-0 mb-4 me-3" onClick={openPopup}>Add Note</button>
 
                 {/* Notepad Popup Modal */}
                 <NotepadPopup
