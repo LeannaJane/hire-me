@@ -15,8 +15,16 @@ export default function ApplicationTable({ applications }) {
         }
     }, [applications]);
 
-    const handleNewJobSubmit = (newApplication) => {
-        setApplicationList((prevList) => [...prevList, newApplication]);
+    const handleNewJobSubmit = (newApplication, editMode = false) => {
+        if (editMode) {
+            setApplicationList((prevList) =>
+                prevList.map((application) =>
+                    application.id === newApplication.id ? newApplication : application
+                )
+            );
+        } else {
+            setApplicationList((prevList) => [...prevList, newApplication]);
+        }
         bootstrap.Modal.getInstance(document.getElementById("applicationTableModal")).hide();
     };
 

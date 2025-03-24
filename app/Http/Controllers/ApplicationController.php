@@ -67,10 +67,50 @@ class ApplicationController extends Controller
     {
         $application = Application::find($id);
         if ($application) {
-            return response()->json(['application' => $application]);
+            return response()->json(['success' => true, 'application' => $application]);
         }
-        return response()->json(['error' => 'Application not found'], 404);
+        return response()->json(['success' => false, 'error' => 'Application not found']);
     }
+
+    public function updateApplication(Request $request)
+    {
+        $application = Application::find($request->id);
+
+        if (! $application) {
+            return response()->json(['success' => false, 'error' => 'Application not found']);
+        }
+
+        $application->job_title = $request->get('job_title');
+        $application->company_name = $request->get('company_name');
+        $application->salary = $request->get('salary');
+        $application->application_date = $request->get('application_date');
+        $application->stage = $request->get('stage');
+        $application->job_link = $request->get('job_link');
+        $application->interview_date = $request->get('interview_date');
+        $application->save();
+
+        return response()->json(['success' => true, 'message' => 'Application updated', 'application' => $application]);
+    }
+
+    public function getInterviewEvents()
+    {
+        $applications = Application::whereNotNull('interview_date')
+            ->where('user_id', Auth::id())
+            ->get();
+
+        $events = $applications->map(function ($application) {
+            return [
+                'id' => $application->id,
+                'title' => "Interview at " . $application->company_name,
+                'start' => $application->interview_date,
+                'end' => $application->interview_date,
+                'company' => $application->company_name,
+            ];
+        });
+
+        return response()->json($events);
+}
+
 
 }
 

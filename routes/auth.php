@@ -22,8 +22,12 @@ Route::middleware(['auth', 'inertia'])->group(function () {
     Route::post("/job-application", [ApplicationController::class, "store"])->name('job.application.store');
     Route::delete('/job-application/{id}', [ApplicationController::class, 'delete']);
     Route::get('/job-application/{id}', [ApplicationController::class, 'viewOne']);
+    Route::put('/job-application/{id}', [ApplicationController::class, 'updateApplication']);
     Route::get("/calendar", [CalendarController::class, "view"]);
     Route::get("/notepad", [NotePadController::class, "view"]);
     Route::post("/notepad", [NotePadController::class, "store"]);
     Route::get("/settings", [SettingsController::class, "view"]);
+    Route::get('/interview-events', [ApplicationController::class, 'getInterviewEvents']);
 });
+
+

@@ -62,7 +62,7 @@ export default function ApplicationModal({ handleSubmit, applicationData = null 
 
         if (response.data.success) {
             handleReset();
-            handleSubmit(response.data.application);
+            handleSubmit(response.data.application, editMode);
         } else {
             setErrors(response.data.errors);
         }

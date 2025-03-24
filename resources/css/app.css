@@ -56,6 +56,9 @@ body {
     color: white;
 }
 
+.rbc-calendar .rbc-event {
+    background-color: #4f4f4f;
+}
 
 .react-datepicker-wrapper {
     display: block !important;
